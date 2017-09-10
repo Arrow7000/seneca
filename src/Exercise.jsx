@@ -47,6 +47,10 @@ class Exercise extends Component {
         const correctText = 'The answer is correct!';
         const wrongText = 'The answer is incorrect.';
 
+        const style = {
+            backgroundImage: `linear-gradient(to bottom, ${topColor}, ${bottomColor})`
+        }
+
         return (
             <div
                 style={style}
