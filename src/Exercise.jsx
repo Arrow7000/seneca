@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import Toggle from './Toggle';
+import { interpolateHslLong } from 'd3-interpolate';
 
 import './Exercise.css';
+
+// All below colours taken from Zeplin mocks
+const topWrongColor = 'rgba(250, 145, 97, 0.7)';
+const bottomWrongColor = 'rgba(247, 59, 28, 0.69)';
+const topCorrectColor = '#47e4c1';
+const bottomCorrectColor = '#07cddd';
+
+const interpolatorTop = interpolateHslLong(topWrongColor, topCorrectColor);
+const interpolatorBottom = interpolateHslLong(bottomWrongColor, bottomCorrectColor);
+
+function getColour(params) {
+
+}
 
 class Exercise extends Component {
     constructor(props) {
@@ -38,13 +52,20 @@ class Exercise extends Component {
 
         const wrongProportion = wrongAnswers / selected.length;
 
-        console.log({ wrongProportion });
+        const topColor = interpolatorTop(1 - wrongProportion);
+        const bottomColor = interpolatorBottom(1 - wrongProportion);
 
         const correctText = 'The answer is correct!';
         const wrongText = 'The answer is incorrect.';
 
+        const style = {
+            backgroundImage: `linear-gradient(to bottom, ${topColor}, ${bottomColor})`
+        }
+
         return (
-            <div className={`Exercise ${allCorrect ? 'Exercise--correct' : ''}`}>
+            <div
+                style={style}
+                className={`Exercise ${allCorrect ? 'Exercise--correct' : ''}`}>
                 {questions.map((question, i) => {
                     return (<Toggle
                         key={i}
