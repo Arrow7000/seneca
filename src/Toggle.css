@@ -9,12 +9,14 @@
 .Toggle__option {
     background: none;
     border: 0;
-    color: #e66549;
+    color: #ffffff;
     font-family: 'Muli', sans-serif;
     font-weight: 700;
     cursor: pointer;
     height: 45px;
+    position: relative;
     z-index: 1;
+    transition: color .4s;
     /* resets */
     line-height: normal;
     overflow: visible;
@@ -26,6 +28,10 @@
     user-select: none;
 }
 
+.Toggle__option--selected {
+    color: rgba(49, 49, 49, 0.75);
+}
+
 .Toggle__option:focus {
     outline: 0;
 }
@@ -35,9 +41,8 @@
     height: 45px;
     position: absolute;
     cursor: pointer;
-    /* left: 0; */
-    transition: left .2s, right .2s;
+    transition: left .4s, right .4s;
     background-color: rgba(249, 249, 249, 0.5);
-    box-shadow: 0 0 6px 1px rgba(195, 51, 51, 0.5);
+    box-shadow: 0 0 6px 1px rgba(119, 119, 119, 0.5);
     z-index: 0;
 }
