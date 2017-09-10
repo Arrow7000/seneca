@@ -33,6 +33,9 @@ class Exercise extends Component {
             })
             .some(answer => !answer);
 
+        const correctText = 'The answer is correct!';
+        const wrongText = 'The answer is incorrect.';
+
         return (
             <div className={`Exercise ${allCorrect ? 'Exercise--correct' : ''}`}>
                 {questions.map((question, i) => {
@@ -43,6 +46,7 @@ class Exercise extends Component {
                         updateAnswer={answerIndex => this.updateAnswer(i, answerIndex)}
                     />);
                 })}
+                <p className="Exercise__verdict">{allCorrect ? correctText : wrongText}</p>
             </div>
         );
     }
