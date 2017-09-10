@@ -27,11 +27,18 @@ class Exercise extends Component {
         const { questions } = this.props;
         const { selected } = this.state;
 
-        const allCorrect = !selected
+        const wrongAnswers = selected
             .map((selectedAnswer, i) => {
                 return selectedAnswer === questions[i].correct;
             })
-            .some(answer => !answer);
+            .filter(answer => !answer)
+            .length;
+
+        const allCorrect = wrongAnswers < 1;
+
+        const wrongProportion = wrongAnswers / selected.length;
+
+        console.log({ wrongProportion });
 
         const correctText = 'The answer is correct!';
         const wrongText = 'The answer is incorrect.';
