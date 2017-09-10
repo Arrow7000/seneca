@@ -1,21 +1,9 @@
 import React, { Component } from 'react';
 import Toggle from './Toggle';
-import { interpolateHslLong } from 'd3-interpolate';
+import { interpolateHsl as interpolate } from 'd3-interpolate';
 
 import './Exercise.css';
 
-// All below colours taken from Zeplin mocks
-const topWrongColor = 'rgba(250, 145, 97, 0.7)';
-const bottomWrongColor = 'rgba(247, 59, 28, 0.69)';
-const topCorrectColor = '#47e4c1';
-const bottomCorrectColor = '#07cddd';
-
-const interpolatorTop = interpolateHslLong(topWrongColor, topCorrectColor);
-const interpolatorBottom = interpolateHslLong(bottomWrongColor, bottomCorrectColor);
-
-function getColour(params) {
-
-}
 
 class Exercise extends Component {
     constructor(props) {
@@ -49,18 +37,15 @@ class Exercise extends Component {
             .length;
 
         const allCorrect = wrongAnswers < 1;
-
         const wrongProportion = wrongAnswers / selected.length;
 
-        const topColor = interpolatorTop(1 - wrongProportion);
-        const bottomColor = interpolatorBottom(1 - wrongProportion);
-
-        const correctText = 'The answer is correct!';
-        const wrongText = 'The answer is incorrect.';
-
+        const { topColor, bottomColor } = getColours(wrongProportion)
         const style = {
             backgroundImage: `linear-gradient(to bottom, ${topColor}, ${bottomColor})`
         }
+
+        const correctText = 'The answer is correct!';
+        const wrongText = 'The answer is incorrect.';
 
         return (
             <div
@@ -81,3 +66,21 @@ class Exercise extends Component {
 }
 
 export default Exercise;
+
+
+// All below colours taken from Zeplin mocks
+const topWrongColor = 'rgba(250, 145, 97, 0.7)';
+const bottomWrongColor = 'rgba(247, 59, 28, 0.69)';
+const topCorrectColor = '#47e4c1';
+const bottomCorrectColor = '#07cddd';
+
+// Interpolates between the colour gradients in the Zeplin mocks
+function getColours(wrongProportion) {
+    const interpolatorTop = interpolate(topWrongColor, topCorrectColor);
+    const interpolatorBottom = interpolate(bottomWrongColor, bottomCorrectColor);
+
+    const topColor = interpolatorTop(1 - wrongProportion);
+    const bottomColor = interpolatorBottom(1 - wrongProportion);
+
+    return { topColor, bottomColor };
+}

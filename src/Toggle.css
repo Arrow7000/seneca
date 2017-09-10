@@ -46,3 +46,7 @@
     box-shadow: 0 0 6px 1px rgba(119, 119, 119, 0.5);
     z-index: 0;
 }
+
+.Toggle__highlight:hover {
+    background-color: rgba(249, 249, 249, 0.4);
+}
