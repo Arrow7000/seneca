@@ -8,7 +8,7 @@ const questions = [
 ];
 
 const style = {
-  padding: '200px'
+  padding: '100px'
 };
 
 class App extends Component {

@@ -17,12 +17,10 @@ class Exercise extends Component {
     updateAnswer(questionIndex, value) {
         const { selected } = this.state;
 
-        this.setState({
-            selected: {
-                ...selected,
-                [questionIndex]: value
-            }
-        });
+        const newSelected = selected.slice();
+        newSelected[questionIndex] = value;
+
+        this.setState({ selected: newSelected });
     }
 
     render() {
@@ -41,7 +39,8 @@ class Exercise extends Component {
                     return (<Toggle
                         key={i}
                         options={question.options}
-                        updateAnswer={this.updateAnswer}
+                        selectedAnswer={selected[i]}
+                        updateAnswer={answerIndex => this.updateAnswer(i, answerIndex)}
                     />);
                 })}
             </div>

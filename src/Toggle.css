@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:400,700');
+.Toggle {
+    /* width: 307px; */
+    border-radius: 100px;
+    border: solid 1px #fbfbfb;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.Toggle__option {
+    background: none;
+    border: 0;
+    color: #e66549;
+    font-family: 'Muli', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    height: 45px;
+    z-index: 1;
+    /* resets */
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    -webkit-appearance: button;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.Toggle__highlight {
+    border-radius: 100px;
+    height: 45px;
+    position: absolute;
+    /* left: 0; */
+    transition: left .2s, right .2s;
+    background-color: white;
+    z-index: 0;
+}
