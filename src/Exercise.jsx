@@ -39,10 +39,7 @@ class Exercise extends Component {
         const allCorrect = wrongAnswers < 1;
         const wrongProportion = wrongAnswers / selected.length;
 
-        const { topColor, bottomColor } = getColours(wrongProportion)
-        const style = {
-            backgroundImage: `linear-gradient(to bottom, ${topColor}, ${bottomColor})`
-        }
+        const { topColor, bottomColor } = getColours(wrongProportion);
 
         const correctText = 'The answer is correct!';
         const wrongText = 'The answer is incorrect.';
