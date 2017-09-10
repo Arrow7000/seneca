@@ -1,0 +1,8 @@
+.Exercise {
+    background-color: red;
+    padding: 50px;
+}
+
+.Exercise--correct {
+    background-color: green;
+}

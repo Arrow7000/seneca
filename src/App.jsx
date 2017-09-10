@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import './App.css';
+import Exercise from './Exercise';
+
+const questions = [
+  { options: ['Hot', 'Cold'], correct: 0 },
+  { options: ['Option 1', 'Option 2'], correct: 1 },
+  { options: ['Active', 'Not active'], correct: 0 },
+];
+
+const style = {
+  padding: '200px'
+};
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div style={style}>
+        <Exercise questions={questions} />
       </div>
     );
   }
