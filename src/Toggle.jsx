@@ -3,7 +3,7 @@ import './Toggle.css';
 
 class Toggle extends Component {
     render() {
-        const { options, selectedAnswer, updateAnswer } = this.props;
+        const { options, selectedAnswer, toggleAnswer } = this.props;
         const len = options.length;
         const fraction = 100 / len;
         const width = fraction + '%';
@@ -15,11 +15,14 @@ class Toggle extends Component {
 
         return (
             <div className="Toggle">
-                <div className="Toggle__highlight" style={highlightStyle} />
-                {options.map((opt, i) => {
+                <div className="Toggle__highlight"
+                    style={highlightStyle}
+                    onClick={() => toggleAnswer()}
+                />
+                {options.map(opt => {
                     return (<button
                         style={optionStyle}
-                        onClick={() => updateAnswer(i)}
+                        onClick={toggleAnswer}
                         key={opt}
                         className="Toggle__option"
                     >

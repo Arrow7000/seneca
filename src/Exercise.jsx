@@ -10,15 +10,15 @@ class Exercise extends Component {
 
         const initialised = questions.map(q => 0);
         this.state = { selected: initialised };
-
-        this.updateAnswer = this.updateAnswer.bind(this);
     }
 
-    updateAnswer(questionIndex, value) {
+    toggleAnswer(questionIndex) {
         const { selected } = this.state;
 
         const newSelected = selected.slice();
-        newSelected[questionIndex] = value;
+        const value = newSelected[questionIndex];
+        const newValue = value === 0 ? 1 : 0;
+        newSelected[questionIndex] = newValue;
 
         this.setState({ selected: newSelected });
     }
@@ -43,7 +43,7 @@ class Exercise extends Component {
                         key={i}
                         options={question.options}
                         selectedAnswer={selected[i]}
-                        updateAnswer={answerIndex => this.updateAnswer(i, answerIndex)}
+                        toggleAnswer={() => this.toggleAnswer(i)}
                     />);
                 })}
                 <p className="Exercise__verdict">{allCorrect ? correctText : wrongText}</p>
